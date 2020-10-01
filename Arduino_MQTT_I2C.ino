@@ -56,10 +56,20 @@ void setup()
 
 void loop()
 {
-  int etherStatus = Ethernet.maintain();
-  if (etherStatus == 1 || etherStatus == 3) {
-    Serial.println(F("Ethernet failed"));
+  if (Ethernet.linkStatus() == LinkOFF) {
+    Serial.println("Link status: Off");
     RGB_color(255, 0, 0); // Red
+    delay(1000);
+  }
+  int etherStatus = Ethernet.maintain();
+  if (etherStatus == 1) {
+    Serial.println(F("Renew failed"));
+    RGB_color(255, 0, 0); // Red
+    delay(1000);
+  } else if (etherStatus == 3) {
+    Serial.println(F("Rebind failed"));
+    RGB_color(255, 0, 0); // Red
+    delay(1000);
   } else {
     if (!mqttClient.connected()) {
       RGB_color(255, 255, 0); // Yellow
