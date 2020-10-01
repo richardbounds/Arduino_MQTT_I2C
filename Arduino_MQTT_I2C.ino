@@ -1,7 +1,7 @@
 #include <UIPEthernet.h>
 #include <PubSubClient.h>
 #include <Wire.h>
-
+#include "config.h"
 
 // Define Slave I2C Address
 #define SLAVE_ADDR 9
@@ -9,11 +9,11 @@
 #define REMOTE_COUNT 32
 
 #ifndef MQTTHOST
-#define MQTTHOST "homeauto"
+#define MQTTHOST "openhab"
 #define MQTTPORT 1883
 #define MQTTCLIENT_ID  "somfy_RTS_1"
-#define MQTTUSER "openhab"
-#define MQTTPASS "habopen"
+#define MQTTUSER "mqttuser"
+#define MQTTPASS "mqttpass"
 #define MQTTTOPIC "somfy_RTS_1/remote/%d" //MQTT topics of the form somfy_RTS_1/remote/{0,1,2,3...31}
 #endif
 
