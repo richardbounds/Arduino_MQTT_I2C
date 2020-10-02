@@ -125,7 +125,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
      remote = atoi(remote_str);
      remote_str = strtok(NULL, "/");
   }
-  char instruction = payload[0]; //support [u]p,[d]own,[s]top
+  char instruction = tolower(payload[0]); //support [u]p,[d]own,[s]top
   Serial.print(F("Remote: "));
   Serial.print(remote);
   Serial.print(F(", instruction: "));
