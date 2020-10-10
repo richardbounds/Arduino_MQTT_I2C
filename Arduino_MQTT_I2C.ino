@@ -18,9 +18,9 @@
 #endif
 
 
-#define BLUE_LIGHT_PIN 2
+#define BLUE_LIGHT_PIN 4
 #define GREEN_LIGHT_PIN 3
-#define RED_LIGHT_PIN 4
+#define RED_LIGHT_PIN 2
  
 uint8_t mac[6] = {0x00,0x01,0x02,0x03,0x04,0x05};
 char* mqtt_topic = MQTTTOPIC;
@@ -42,7 +42,7 @@ void setup()
   pinMode(BLUE_LIGHT_PIN, OUTPUT);
   RGB_color(255, 0, 0); // Red at startup
 
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println(F("=====Starting======"));
   if(Ethernet.begin(mac)) {
     Serial.println(Ethernet.localIP());
